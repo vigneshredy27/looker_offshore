@@ -24,7 +24,7 @@ explore: hyundai {}
 #   }
 # }
 
-# explore: product_sales_csv {
+# explore: product_sales_csv {}
 #   join: products {
 #     type: left_outer
 #     sql_on: ${product_sales_csv.product_id} = ${products.product_id} ;;
@@ -53,3 +53,5 @@ explore: newtest {}
 explore: name {}
 
 explore: update {}
+
+explore: model_user_predictions {}
