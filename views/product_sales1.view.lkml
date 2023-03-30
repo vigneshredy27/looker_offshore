@@ -72,11 +72,16 @@ view: product_sales1 {
     sql: ${TABLE}.unit_selling_price ;;
   }
 
-  measure: AVERAGE {
+  measure: average_profit{
     type: average
     sql: ${profit}  ;;
     value_format_name: usd
   }
+
+  # measure: profit_count {
+  #   type: count
+  #   sql: ${average_profit} ;;
+  # }
 
   measure: SUM {
     type: sum
