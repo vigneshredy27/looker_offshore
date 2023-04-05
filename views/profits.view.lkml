@@ -80,3 +80,9 @@ view: profits {
     }
 
 }
+
+view: profits_pdt {
+  derived_table: {
+    explore_source: sales {}
+  }
+}
