@@ -76,8 +76,15 @@ explore: superstore {
 
 explore: energy_consumption_monthly {}
 explore: energy_consumption_weekly {}
+#   join: indian_cities_location {
+#     type: left_outer
+#     sql_on: ${indian_cities_location.city} = ${energy_consumption_weekly.city} ;;
+#     relationship: one_to_many
+#   }
+# }
 explore: insurance {}
 explore: manufacturing_operations {}
 explore: supply_chain_logistics {}
 explore: tech_layoffs {}
 explore: us_zips {}
+explore: indian_cities_location {}

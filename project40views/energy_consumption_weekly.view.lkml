@@ -230,10 +230,20 @@ view: energy_consumption_weekly {
     sql: ${ytd_actual_kwh_previous_year} ;;
   }
 
-  measure: avg_budget_kwh {
-    type: average
+  measure: Total_budget_kwh {
+    type: sum
     sql: ${budget_kwh} ;;
+    label: "Energy Consumption (kWh)"
+    label_from_parameter: "kwh_format"
   }
+  parameter: kwh_format {
+    type: number
+    default_value: "kWh"
+  }
+  # value_format: kwh_format {
+  #   type: number
+  #   units: "kWh"
+  # }
 
   measure: sum_ytd_budget {
     type:  sum
