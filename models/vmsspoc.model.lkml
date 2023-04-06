@@ -76,11 +76,11 @@ explore: superstore {
 
 explore: energy_consumption_monthly {}
 explore: energy_consumption_weekly {}
-#   join: indian_cities_location {
-#     type: left_outer
-#     sql_on: ${indian_cities_location.city} = ${energy_consumption_weekly.city} ;;
-#     relationship: one_to_many
-#   }
+  # join: indian_cities_location {
+  #   type: left_outer
+  #   sql_on: ${indian_cities_location.city} = ${energy_consumption_weekly.city} ;;
+  #   relationship: one_to_many
+  # }
 # }
 explore: insurance {}
 explore: manufacturing_operations {}
@@ -88,3 +88,23 @@ explore: supply_chain_logistics {}
 explore: tech_layoffs {}
 explore: us_zips {}
 explore: indian_cities_location {}
+explore: invoice_data {
+  join: invoice_data_items {
+    type: left_outer
+    # foreign_key: invoice_data_items.item_id
+    sql_on: ${invoice_data.item_id} =  ${invoice_data_items.item_id};;
+    relationship: one_to_one
+  }
+
+  join: invoice_data_exchange_rates {
+    type: left_outer
+    sql_on: ${invoice_data.currency_id} = ${invoice_data_exchange_rates.currency_id} ;;
+    relationship: many_to_one
+  }
+
+}
+
+
+explore: invoice_data_items {}
+explore: invoice_data_exchange_rates {}
+explore: invoice_data_items_exchange_rates {}
