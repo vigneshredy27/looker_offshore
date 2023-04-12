@@ -76,6 +76,7 @@ explore: superstore {
 
 explore: energy_consumption_monthly {}
 explore: energy_consumption_weekly {}
+explore: weekly_energy_comsumption {}
   # join: indian_cities_location {
   #   type: left_outer
   #   sql_on: ${indian_cities_location.city} = ${energy_consumption_weekly.city} ;;
@@ -108,3 +109,4 @@ explore: invoice_data {
 explore: invoice_data_items {}
 explore: invoice_data_exchange_rates {}
 explore: invoice_data_items_exchange_rates {}
+explore: ipl_dataset {}
