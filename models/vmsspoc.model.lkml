@@ -3,6 +3,7 @@ connection: "vbqconnection"
 # include all the views
 include: "/views/**/*.view"
 include: "/project40views/**/*.view"
+include: "/telecommunication/**/*.view"
 
 datagroup: vmsspoc_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -110,3 +111,31 @@ explore: invoice_data_items {}
 explore: invoice_data_exchange_rates {}
 explore: invoice_data_items_exchange_rates {}
 explore: ipl_dataset {}
+
+
+# explore: agents_and_brands {}
+
+explore: agents_and_brands {
+  join: table_brands {
+    type: left_outer
+    sql_on: ${table_brands.brand} = ${agents_and_brands.brands} ;;
+    relationship: one_to_many
+  }
+
+  join: srs_src_file_email_count {
+    type: left_outer
+    sql_on: ${srs_src_file_email_count.agent_name} = ${agents_and_brands.agents_name} ;;
+    relationship: many_to_one
+  }
+
+  join: srs_src_file_kc_agntallfields {
+    type: left_outer
+    sql_on: ${srs_src_file_kc_agntallfields.agentname} = ${agents_and_brands.agents_name} ;;
+    relationship: many_to_one
+  }
+}
+explore: csq_and_brands {}
+explore: srs_src_file_email_count {}
+explore: srs_src_file_kc_agntallfields {}
+explore: srs_src_file_kc_csqallfields {}
+explore: table_brands {}

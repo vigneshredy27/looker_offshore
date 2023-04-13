@@ -1,0 +1,144 @@
+view: srs_src_file_kc_csqallfields {
+  sql_table_name: `decisive-triode-363515.telecom.SRS_SRC_FILE_KC_CSQALLFIELDS`
+    ;;
+
+  dimension: asa {
+    type: number
+    sql: ${TABLE}.ASA ;;
+  }
+
+  dimension: avgabandonedperday {
+    type: number
+    sql: ${TABLE}.AVGABANDONEDPERDAY ;;
+  }
+
+  dimension: avgabandonedtime {
+    type: number
+    sql: ${TABLE}.AVGABANDONEDTIME ;;
+  }
+
+  dimension: avgdequeuedtime {
+    type: number
+    sql: ${TABLE}.AVGDEQUEUEDTIME ;;
+  }
+
+  dimension: avghandletime {
+    type: number
+    sql: ${TABLE}.AVGHANDLETIME ;;
+  }
+
+  dimension: avgqueuetime {
+    type: number
+    sql: ${TABLE}.AVGQUEUETIME ;;
+  }
+
+  dimension: avgspeedofanswer {
+    type: number
+    sql: ${TABLE}.AVGSPEEDOFANSWER ;;
+  }
+
+  dimension: avgspeedofanswer_in_min {
+    type: number
+    sql: ${TABLE}.AVGSPEEDOFANSWER_in_min ;;
+  }
+
+  dimension: callsabandoned {
+    type: number
+    sql: ${TABLE}.CALLSABANDONED ;;
+  }
+
+  dimension: callsabandonedservicelevel {
+    type: number
+    sql: ${TABLE}.CALLSABANDONEDSERVICELEVEL ;;
+  }
+
+  dimension: callsdequeued {
+    type: number
+    sql: ${TABLE}.CALLSDEQUEUED ;;
+  }
+
+  dimension: callshandled {
+    type: number
+    sql: ${TABLE}.CALLSHANDLED ;;
+  }
+
+  dimension: callshandledbyother {
+    type: number
+    sql: ${TABLE}.CALLSHANDLEDBYOTHER ;;
+  }
+
+  dimension: callshandledservicelevel {
+    type: number
+    sql: ${TABLE}.CALLSHANDLEDSERVICELEVEL ;;
+  }
+
+  dimension: callspresented {
+    type: number
+    sql: ${TABLE}.CALLSPRESENTED ;;
+  }
+
+  dimension: csq_asa_ {
+    type: number
+    sql: ${TABLE}.CSQ_Asa_ ;;
+  }
+
+  dimension: csqname {
+    type: string
+    sql: ${TABLE}.CSQNAME ;;
+  }
+
+  dimension: load_date {
+    type: number
+    sql: ${TABLE}.LOAD_DATE ;;
+  }
+
+  dimension: maxabandonedperday {
+    type: number
+    sql: ${TABLE}.MAXABANDONEDPERDAY ;;
+  }
+
+  dimension: maxabandonedtime {
+    type: number
+    sql: ${TABLE}.MAXABANDONEDTIME ;;
+  }
+
+  dimension: maxdequeuedtime {
+    type: number
+    sql: ${TABLE}.MAXDEQUEUEDTIME ;;
+  }
+
+  dimension: maxhandletime {
+    type: number
+    sql: ${TABLE}.MAXHANDLETIME ;;
+  }
+
+  dimension: maxqueuetime {
+    type: number
+    sql: ${TABLE}.MAXQUEUETIME ;;
+  }
+
+  dimension: percentabandoned {
+    type: number
+    sql: ${TABLE}.PERCENTABANDONED ;;
+  }
+
+  dimension: percentdequeued {
+    type: number
+    sql: ${TABLE}.PERCENTDEQUEUED ;;
+  }
+
+  dimension: percenthandled {
+    type: number
+    sql: ${TABLE}.PERCENTHANDLED ;;
+  }
+
+  dimension: servicelevel_sec {
+    type: number
+    sql: ${TABLE}.SERVICELEVEL_SEC ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [csqname]
+  }
+}
