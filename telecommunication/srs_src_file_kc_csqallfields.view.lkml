@@ -87,8 +87,18 @@ view: srs_src_file_kc_csqallfields {
     sql: ${TABLE}.CSQNAME ;;
   }
 
-  dimension: load_date {
-    type: number
+  dimension_group: load {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.LOAD_DATE ;;
   }
 

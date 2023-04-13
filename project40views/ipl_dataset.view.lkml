@@ -82,12 +82,28 @@ view: ipl_dataset {
     sql: (${team1_score}+${team2_score})/2 ;;
   }
 
+  dimension: Loosing_Team {
+    type: string
+    sql: CASE
+    WHEN ${TABLE}.winner = ${TABLE}.team1 THEN ${TABLE}.team2
+    ELSE ${TABLE}.team1
+    END ;;
+  }
+
   dimension: Toss_Win_Loss {
     type: string
     sql: CASE
           WHEN ${toss_winner} = ${winner} THEN 'Won The Toss'
           ELSE 'Lost The Toss'
         END ;;
+  }
+
+  dimension: Toss_Loosing_Team {
+    type: string
+    sql: CASE
+          WHEN ${toss_winner} = ${TABLE}.team1 THEN ${TABLE}.team2
+          ELSE ${TABLE}.team1
+          END ;;
   }
 
   dimension: Team_Win_Loss {
@@ -103,9 +119,12 @@ view: ipl_dataset {
     sql: ${winner} ;;
   }
 
+
+
   measure: count {
     type: count
     drill_fields: []
+    label: "Total Matches Won"
   }
 
   measure: Avg_team_score {
@@ -114,13 +133,25 @@ view: ipl_dataset {
     value_format: "0.##"
   }
 
+  measure: Matches_Won_By_The_Team {
+    type: count
+    drill_fields: [winner]
+    label: "Number of Matches Won"
+  }
+
+  measure: Matches_Lost_By_The_Team {
+    type: count
+    drill_fields: [Loosing_Team]
+    label: "Number of Matches Lost"
+  }
+
   measure: toss_count {
     type: count
     # sql: ${Toss_Win_Loss} ;;
-    drill_fields: [Toss_Win_Loss]
+    drill_fields: [toss_choice]
   }
 
-  measure: Number_of_Matches_Played {
+  measure: Number_of_Matches_Played_in_Stadiums {
     type: count
     # sql: ${place} ;;
     label: "Number of Matches Played"
@@ -137,6 +168,15 @@ view: ipl_dataset {
     type: count
     drill_fields: [man_of_the_match]
     label: "Number of Man of the Match Trophies Won"
+  }
+
+  measure: Total_Matches_Played {
+    type: count
+    drill_fields: [total_matches_count*]
+  }
+
+  set: total_matches_count {
+    fields: [Team]
   }
 
 }

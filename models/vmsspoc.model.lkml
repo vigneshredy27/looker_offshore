@@ -110,32 +110,45 @@ explore: invoice_data {
 explore: invoice_data_items {}
 explore: invoice_data_exchange_rates {}
 explore: invoice_data_items_exchange_rates {}
-explore: ipl_dataset {}
-
-
-# explore: agents_and_brands {}
-
-explore: agents_and_brands {
-  join: table_brands {
+explore: ipl_dataset {
+  join: ipl_teams_names {
     type: left_outer
-    sql_on: ${table_brands.brand} = ${agents_and_brands.brands} ;;
-    relationship: one_to_many
-  }
-
-  join: srs_src_file_email_count {
-    type: left_outer
-    sql_on: ${srs_src_file_email_count.agent_name} = ${agents_and_brands.agents_name} ;;
+    sql_on: ${ipl_teams_names.winner} = ${ipl_dataset.winner} ;;
     relationship: many_to_one
   }
 
-  join: srs_src_file_kc_agntallfields {
+  join: margin {
     type: left_outer
-    sql_on: ${srs_src_file_kc_agntallfields.agentname} = ${agents_and_brands.agents_name} ;;
-    relationship: many_to_one
+    sql_on: ${margin.margin} = ${ipl_dataset.margin} ;;
+    relationship: one_to_one
   }
 }
+
+
+explore: agents_and_brands {}
+
+# explore: agents_and_brands {
+#   join: table_brands {
+#     type: left_outer
+#     sql_on: ${table_brands.brand} = ${agents_and_brands.brands} ;;
+#     relationship: one_to_many
+#   }
+
+#   join: srs_src_file_email_count {
+#     type: left_outer
+#     sql_on: ${srs_src_file_email_count.agent_name} = ${agents_and_brands.agents_name} ;;
+#     relationship: many_to_one
+#   }
+
+#   join: srs_src_file_kc_agntallfields {
+#     type: left_outer
+#     sql_on: ${srs_src_file_kc_agntallfields.agentname} = ${agents_and_brands.agents_name} ;;
+#     relationship: many_to_one
+#   }
+# }
 explore: csq_and_brands {}
 explore: srs_src_file_email_count {}
 explore: srs_src_file_kc_agntallfields {}
 explore: srs_src_file_kc_csqallfields {}
 explore: table_brands {}
+explore: ipl_teams_names {}

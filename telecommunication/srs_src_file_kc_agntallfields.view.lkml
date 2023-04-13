@@ -89,7 +89,8 @@ view: srs_src_file_kc_agntallfields {
 
   dimension: handleratio {
     type: number
-    sql: ${TABLE}.HANDLERATIO ;;
+    sql: (${TABLE}.HANDLERATIO)*100 ;;
+    value_format: "0.00\%"
   }
 
   dimension: inboundacdavgholdtime {
@@ -142,8 +143,18 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.INBOUNDNONACDONNONIPCCTOTAL ;;
   }
 
-  dimension: load_date {
-    type: number
+  dimension_group: load {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.LOAD_DATE ;;
   }
 
@@ -307,33 +318,21 @@ view: srs_src_file_kc_agntallfields {
     sql: ${callsabandoned} ;;
   }
 
-  dimension: Calls_Presented_to_Handled_Ratio {
-    type: number
-    sql: (${callshandled}/${callspresented}) ;;
-    # value_format: "0.00\%"
-  }
-
-  dimension: Calls_Presented_to_Abandoned_Ratio {
-    type: number
-    sql: (${callsabandoned}/${callspresented}) ;;
-    # value_format: "0.00\%"
-  }
-
-  measure: Calls_Presented_by_Handled_Ratio {
-    type: sum
-    sql: ${Calls_Presented_to_Handled_Ratio} ;;
-    # value_format: "0.00\%"
-  }
 
   measure: Calls_Presented_by_Abandoned_Ratio {
     type: sum
     sql: ${handleratio} ;;
-     value_format: "0.00\%"
+    value_format: "0.00\%"
+  }
+
+  measure: Avg_Calls_Handled_Ratio {
+    type: average
+    sql: ${handleratio} ;;
+    value_format: "0.00\%"
   }
 
   measure: Totals_Calls {
     type: sum
     sql: ${total_cals} ;;
   }
-
 }

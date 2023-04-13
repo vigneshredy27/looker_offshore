@@ -12,8 +12,18 @@ view: srs_src_file_email_count {
     sql: ${TABLE}.Emails_Send_count ;;
   }
 
-  dimension: load_date {
-    type: number
+  dimension_group: load {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}.LOAD_DATE ;;
   }
 
@@ -37,10 +47,18 @@ view: srs_src_file_email_count {
     drill_fields: [agent_name, userprincipalname]
   }
 
-  measure: Total_Emails_Sent {
-    type: count
-    drill_fields: [emails_send_count]
+  measure: Total_Emails_Received {
+    type: sum
+    sql: ${receivecount} ;;
   }
 
+  measure: Total_Emails_Read {
+    type: sum
+    sql: ${readcount} ;;
+  }
 
+  measure: Total_Emails_Send {
+    type: sum
+    sql: ${emails_send_count} ;;
+  }
 }
