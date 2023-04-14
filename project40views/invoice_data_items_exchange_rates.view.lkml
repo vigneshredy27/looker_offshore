@@ -97,8 +97,53 @@ view: invoice_data_items_exchange_rates {
     sql: ${TABLE}.Unit_Price ;;
   }
 
+  dimension: Total_Purchase_Order_Amount {
+    type: number
+    sql: (${item_quantity})*(${unit_price})*(${rate}) ;;
+    # value_format_name: usd
+  }
+
+  dimension: Total_Invoice_Amount {
+    type: number
+    sql: (${item_quantity})*(${unit_price}) ;;
+    # value_format_name: usd
+  }
+
+
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: Number_Of_Purchase_Orders {
+    type: count
+    drill_fields: []
+  }
+
+  measure: Total_Purchases_Order_Amount_ {
+    type: sum
+    sql: ${Total_Purchase_Order_Amount} ;;
+    value_format: "0.00"
+    value_format_name: usd
+  }
+  measure: Average_Purchases_Order_Amount_ {
+    type: average
+    sql: ${Total_Purchase_Order_Amount} ;;
+    value_format: "0.00"
+    value_format_name: usd
+  }
+
+  measure: Average_Order_Invoice_Amount {
+    type: average
+    sql: ${Total_Invoice_Amount} ;;
+    value_format: "0.00"
+    value_format_name: usd
+  }
+
+  measure: Total_Order_Invoice_Amount {
+    type: sum
+    sql: ${Total_Invoice_Amount} ;;
+    value_format: "0.00"
+    value_format_name: usd
   }
 }
