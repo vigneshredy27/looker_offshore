@@ -124,13 +124,13 @@ explore: ipl_dataset {
   }
 }
 
-
-explore: agents_and_brands {}
+explore: telecommunication_table {}
+ explore: agents_and_brands {}
 
 # explore: agents_and_brands {
 #   join: table_brands {
 #     type: left_outer
-#     sql_on: ${table_brands.brand} = ${agents_and_brands.brands} ;;
+#     sql_on: ${table_brands.brand} =  ${agents_and_brands.brands} ;;
 #     relationship: one_to_many
 #   }
 
@@ -144,7 +144,21 @@ explore: agents_and_brands {}
 #     type: left_outer
 #     sql_on: ${srs_src_file_kc_agntallfields.agentname} = ${agents_and_brands.agents_name} ;;
 #     relationship: many_to_one
+#     # fields: [srs_src_file_kc_agntallfields.total_cals]
 #   }
+
+#   join: srs_src_file_kc_csqallfields {
+#     type: left_outer
+#     sql_on: ${srs_src_file_kc_csqallfields.load_date} = ${srs_src_file_kc_agntallfields.load_date} ;;
+#     relationship: one_to_one
+#   }
+
+#   join: csq_and_brands {
+#     type: left_outer
+#     sql_on: ${csq_and_brands.csq} = ${srs_src_file_kc_csqallfields.csqname} ;;
+#     relationship: one_to_many
+#   }
+
 # }
 explore: csq_and_brands {}
 explore: srs_src_file_email_count {}

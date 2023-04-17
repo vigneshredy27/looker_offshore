@@ -1,5 +1,5 @@
-view: srs_src_file_kc_agntallfields {
-  sql_table_name: `decisive-triode-363515.telecom.SRS_SRC_FILE_KC_AGNTALLFIELDS`
+view: telecommunication_table {
+  sql_table_name: `decisive-triode-363515.telecom.telecommunication_table`
     ;;
 
   dimension: acdconference {
@@ -17,6 +17,11 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.ACDTRANSFEROUT ;;
   }
 
+  dimension: agent_name {
+    type: string
+    sql: ${TABLE}.Agent_Name ;;
+  }
+
   dimension: agentextension {
     type: number
     sql: ${TABLE}.AGENTEXTENSION ;;
@@ -27,10 +32,59 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.AGENTID ;;
   }
 
+  dimension: agentname {
+    type: string
+    sql: ${TABLE}.AGENTNAME ;;
+  }
+
+  dimension: agents_count {
+    type: number
+    sql: ${TABLE}.Agents_count ;;
+  }
+
+  dimension: agents_name {
+    type: string
+    sql: ${TABLE}.agents_name ;;
+  }
+
+  dimension: asa {
+    type: number
+    sql: ${TABLE}.ASA ;;
+  }
+
+  dimension: average_inbound_talk_time {
+    type: number
+    sql: ${TABLE}.Average_Inbound_talk_time ;;
+  }
+
+  dimension: average_outbound_talk_time {
+    type: number
+    sql: ${TABLE}.Average_Outbound_talk_time ;;
+  }
+
+  dimension: avgabandonedperday {
+    type: number
+    sql: ${TABLE}.AVGABANDONEDPERDAY ;;
+  }
+
+  dimension: avgabandonedtime {
+    type: number
+    sql: ${TABLE}.AVGABANDONEDTIME ;;
+  }
+
+  dimension: avgdequeuedtime {
+    type: number
+    sql: ${TABLE}.AVGDEQUEUEDTIME ;;
+  }
 
   dimension: avghandletime {
     type: number
     sql: ${TABLE}.AVGHANDLETIME ;;
+  }
+
+  dimension: avghandletime_1 {
+    type: number
+    sql: ${TABLE}.AVGHANDLETIME_1 ;;
   }
 
   dimension: avgholdtime {
@@ -48,6 +102,21 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.AVGLOGGEDINTIME ;;
   }
 
+  dimension: avgqueuetime {
+    type: number
+    sql: ${TABLE}.AVGQUEUETIME ;;
+  }
+
+  dimension: avgspeedofanswer {
+    type: number
+    sql: ${TABLE}.AVGSPEEDOFANSWER ;;
+  }
+
+  dimension: avgspeedofanswer_in_min {
+    type: number
+    sql: ${TABLE}.AVGSPEEDOFANSWER_in_min ;;
+  }
+
   dimension: avgtalktime {
     type: number
     sql: ${TABLE}.AVGTALKTIME ;;
@@ -58,9 +127,29 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.AVGWORKTIME ;;
   }
 
+  dimension: brands {
+    type: string
+    sql: ${TABLE}.brands ;;
+  }
+
   dimension: callsabandoned {
     type: number
     sql: ${TABLE}.CALLSABANDONED ;;
+  }
+
+  dimension: callsabandoned_1 {
+    type: number
+    sql: ${TABLE}.CALLSABANDONED_1 ;;
+  }
+
+  dimension: callsabandonedservicelevel {
+    type: number
+    sql: ${TABLE}.CALLSABANDONEDSERVICELEVEL ;;
+  }
+
+  dimension: callsdequeued {
+    type: number
+    sql: ${TABLE}.CALLSDEQUEUED ;;
   }
 
   dimension: callshandled {
@@ -68,15 +157,54 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.CALLSHANDLED ;;
   }
 
+  dimension: callshandled_1 {
+    type: number
+    sql: ${TABLE}.CALLSHANDLED_1 ;;
+  }
+
+  dimension: callshandledbyother {
+    type: number
+    sql: ${TABLE}.CALLSHANDLEDBYOTHER ;;
+  }
+
+  dimension: callshandledservicelevel {
+    type: number
+    sql: ${TABLE}.CALLSHANDLEDSERVICELEVEL ;;
+  }
+
   dimension: callspresented {
     type: number
     sql: ${TABLE}.CALLSPRESENTED ;;
   }
 
+  dimension: callspresented_1 {
+    type: number
+    sql: ${TABLE}.CALLSPRESENTED_1 ;;
+  }
+
+  dimension: csq {
+    type: string
+    sql: ${TABLE}.csq ;;
+  }
+
+  dimension: csq_asa_ {
+    type: number
+    sql: ${TABLE}.CSQ_Asa_ ;;
+  }
+
+  dimension: csqname {
+    type: string
+    sql: ${TABLE}.CSQNAME ;;
+  }
+
+  dimension: emails_send_count {
+    type: number
+    sql: ${TABLE}.Emails_Send_count ;;
+  }
+
   dimension: handleratio {
     type: number
-    sql: (${TABLE}.HANDLERATIO)*100 ;;
-    value_format: "0.00\%"
+    sql: ${TABLE}.HANDLERATIO ;;
   }
 
   dimension: inboundacdavgholdtime {
@@ -92,6 +220,11 @@ view: srs_src_file_kc_agntallfields {
   dimension: inboundacdavgworktime {
     type: number
     sql: ${TABLE}.INBOUNDACDAVGWORKTIME ;;
+  }
+
+  dimension: inboundacdtotal {
+    type: number
+    sql: ${TABLE}.INBOUNDACDTOTAL ;;
   }
 
   dimension: inboundnonacdonipccavgtalktime {
@@ -139,9 +272,29 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.LOAD_DATE ;;
   }
 
+  dimension: maxabandonedperday {
+    type: number
+    sql: ${TABLE}.MAXABANDONEDPERDAY ;;
+  }
+
+  dimension: maxabandonedtime {
+    type: number
+    sql: ${TABLE}.MAXABANDONEDTIME ;;
+  }
+
+  dimension: maxdequeuedtime {
+    type: number
+    sql: ${TABLE}.MAXDEQUEUEDTIME ;;
+  }
+
   dimension: maxhandletime {
     type: number
     sql: ${TABLE}.MAXHANDLETIME ;;
+  }
+
+  dimension: maxhandletime_1 {
+    type: number
+    sql: ${TABLE}.MAXHANDLETIME_1 ;;
   }
 
   dimension: maxholdtime {
@@ -152,6 +305,11 @@ view: srs_src_file_kc_agntallfields {
   dimension: maxidletime {
     type: number
     sql: ${TABLE}.MAXIDLETIME ;;
+  }
+
+  dimension: maxqueuetime {
+    type: number
+    sql: ${TABLE}.MAXQUEUETIME ;;
   }
 
   dimension: maxtalktime {
@@ -204,6 +362,10 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.OUTBOUNDONIPCCMAXCALTIME ;;
   }
 
+  dimension: outboundonipcctotal {
+    type: number
+    sql: ${TABLE}.OUTBOUNDONIPCCTOTAL ;;
+  }
 
   dimension: outboundonnonipccavgcalltime {
     type: number
@@ -220,6 +382,26 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.OUTBOUNDONNONIPCCTOTAL ;;
   }
 
+  dimension: percentabandoned {
+    type: number
+    sql: ${TABLE}.PERCENTABANDONED ;;
+  }
+
+  dimension: percentdequeued {
+    type: number
+    sql: ${TABLE}.PERCENTDEQUEUED ;;
+  }
+
+  dimension: percenthandled {
+    type: number
+    sql: ${TABLE}.PERCENTHANDLED ;;
+  }
+
+  dimension: readcount {
+    type: number
+    sql: ${TABLE}.READCOUNT ;;
+  }
+
   dimension: readytime {
     type: number
     sql: ${TABLE}.READYTIME ;;
@@ -230,6 +412,11 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.READYTIME_PERCENT ;;
   }
 
+  dimension: receivecount {
+    type: number
+    sql: ${TABLE}.RECEIVECOUNT ;;
+  }
+
   dimension: reservedtime {
     type: number
     sql: ${TABLE}.RESERVEDTIME ;;
@@ -238,6 +425,11 @@ view: srs_src_file_kc_agntallfields {
   dimension: reservedtime_percent {
     type: number
     sql: ${TABLE}.RESERVEDTIME_PERCENT ;;
+  }
+
+  dimension: servicelevel_sec {
+    type: number
+    sql: ${TABLE}.SERVICELEVEL_SEC ;;
   }
 
   dimension: talkingtime {
@@ -265,6 +457,11 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.TOTALLOGGEDINTIME ;;
   }
 
+  dimension: userprincipalname {
+    type: string
+    sql: ${TABLE}.USERPRINCIPALNAME ;;
+  }
+
   dimension: worktime {
     type: number
     sql: ${TABLE}.WORKTIME ;;
@@ -275,133 +472,15 @@ view: srs_src_file_kc_agntallfields {
     sql: ${TABLE}.WORKTIME_PERCENT ;;
   }
 
-  dimension: agentname {
-    type: string
-    sql: ${TABLE}.AGENTNAME ;;
-  }
-
-  dimension: average_inbound_talk_time {
-    type: number
-    sql: (${TABLE}.Average_Inbound_talk_time)*60*60 ;;
-    value_format: "0 \" minutes\""
-  }
-
-  dimension: average_outbound_talk_time {
-    type: number
-    sql: (${TABLE}.Average_Outbound_talk_time)*60*60 ;;
-    value_format: "0 \" minutes\""
-  }
-
-  dimension: inboundacdtotal {
-    type: number
-    sql: ${TABLE}.INBOUNDACDTOTAL ;;
-    value_format: "0 \" minutes\""
-  }
-
-  dimension: outboundonipcctotal {
-    type: number
-    sql: ${TABLE}.OUTBOUNDONIPCCTOTAL ;;
-    value_format: "0 \" minutes\""
-  }
-
-  measure: Average_Inbound_Talktime {
-    type: sum
-    sql: ${average_inbound_talk_time};;
-    value_format: "00:00:00"
-  }
-
-  measure: Average_Outbound_Talktime {
-    type: sum
-    sql: ${average_outbound_talk_time};;
-    value_format: "00:00:00"
-  }
-
-  measure: Total_Inbound_Talktime {
-    type: sum
-    sql: ${inboundacdtotal} ;;
-    value_format: "0 \" minutes\""
-  }
-
-  measure: Total_Outbound_Talktime {
-    type: sum
-    sql: ${outboundonipcctotal};;
-    value_format: "0 \" minutes\""
-  }
-
   measure: count {
     type: count
-    drill_fields: [agentname]
+    drill_fields: [agent_name, userprincipalname, csqname, agentname, agents_name]
   }
 
-  measure: Total_Calls_Handled_by_Agent {
-    type: sum
-    sql: ${callshandled} ;;
-  }
-
-  measure: Total_Calls_Presented_by_Agent {
-    type: sum
-    sql: ${callspresented} ;;
-  }
-
-  measure: Total_Calls_Abandoned_by_Agent {
-    type: sum
-    sql: ${callsabandoned} ;;
-  }
-
-
-  measure: Calls_Presented_by_Abandoned_Ratio {
-    type: sum
-    sql: ${handleratio} ;;
-    value_format: "0.00\%"
-  }
-
-  measure: Avg_Calls_Handled_Ratio {
+  measure: Average_Hours_Logged {
     type: average
-    sql: ${handleratio} ;;
-    value_format: "0.00\%"
+    sql: ${totalloggedintime} ;;
   }
 
-  measure: Totals_Calls {
-    type: sum
-    sql: ${total_cals} ;;
-  }
-
-  measure: Total_Calls_Handleed_Ratio_by_Agents {
-    type: sum
-    sql: ${handleratio} ;;
-  }
-
-  measure: Average_Calls_Handled_Time {
-    type: average
-    sql: ${avghandletime} ;;
-    value_format: "0 \" minutes\""
-  }
-
-  dimension: Agent_Utilization {
-    type: number
-    sql: (${new})/(${totalloggedintime}) ;;
-  }
-
-  measure: Agent_Utilisation {
-    type: average
-    sql: ${Agent_Utilization} ;;
-  }
-
-  measure: Total_Calls {
-    type: sum
-    sql: ${total_cals} ;;
-  }
-
-  measure: Average_Calls {
-    type: average
-    sql: ${total_cals} ;;
-    value_format: "0.00"
-  }
-
-  measure: Average_Calls_Abandoned {
-    type: average
-    sql: ${callsabandoned} ;;
-    value_format: "0.00"
-  }
 
 }

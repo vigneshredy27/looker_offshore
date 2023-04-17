@@ -1,4 +1,4 @@
-view: agents_and_brands {
+view: combined_table {
   sql_table_name: `decisive-triode-363515.telecom.agents_and_brands`
     ;;
 
