@@ -151,4 +151,13 @@ view: srs_src_file_kc_csqallfields {
     type: count
     drill_fields: [csqname]
   }
+
+  measure: Speed_Of_Answer {
+    type: average
+    sql: ${avgspeedofanswer_in_min} ;;
+    value_format: "0.00  \"Minutes\""
+  }
+
+
+
 }

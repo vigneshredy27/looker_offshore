@@ -4,6 +4,7 @@ connection: "vbqconnection"
 include: "/views/**/*.view"
 include: "/project40views/**/*.view"
 include: "/telecommunication/**/*.view"
+include: "/sprint_3_4/**/*.view"
 
 datagroup: vmsspoc_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -125,7 +126,14 @@ explore: ipl_dataset {
 }
 
 explore: telecommunication_table {}
- explore: agents_and_brands {}
+explore: combined_table {}
+explore: agents_and_brands {
+  join: combined_table {
+    type: left_outer
+    sql_on: ${agents_and_brands.brands} = ${combined_table.brand} ;;
+    relationship: one_to_many
+  }
+}
 
 # explore: agents_and_brands {
 #   join: table_brands {
@@ -160,9 +168,34 @@ explore: telecommunication_table {}
 #   }
 
 # }
+explore: calls {}
+
 explore: csq_and_brands {}
+#   join: srs_src_file_kc_csqallfields {
+#     type: left_outer
+#     sql_on: ${srs_src_file_kc_csqallfields.csqname} = ${csq_and_brands.csq} ;;
+#     relationship: one_to_many
+#   }
+#   join: table_brands {
+#     type: left_outer
+#     sql_on: ${table_brands.brand} = ${csq_and_brands.brand} ;;
+#     relationship: many_to_one
+#   }
+#   join: agents_and_brands {
+#     type: left_outer
+#     sql_on: ${agents_and_brands.brands} = ${csq_and_brands.brand} ;;
+#     relationship: many_to_many
+#   }
+
+# }
 explore: srs_src_file_email_count {}
 explore: srs_src_file_kc_agntallfields {}
-explore: srs_src_file_kc_csqallfields {}
+explore: srs_src_file_kc_csqallfields {
+  join: calls {
+    type: left_outer
+    sql_on: ${srs_src_file_kc_csqallfields.load_date} = ${calls.load_date} ;;
+    relationship: one_to_one
+  }
+}
 explore: table_brands {}
 explore: ipl_teams_names {}
