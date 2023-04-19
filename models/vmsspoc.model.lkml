@@ -16,8 +16,10 @@ persist_with: vmsspoc_default_datagroup
 explore: drugtest {}
 
 explore: drugtrain {}
-
+explore: weather_history_report {}
 explore: hyundai {}
+# explore: global_inflation {}
+explore: airline_data {}
 
 # explore: product_sales1 {
 #   join: products {
