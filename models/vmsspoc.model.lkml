@@ -14,7 +14,8 @@ datagroup: vmsspoc_default_datagroup {
 persist_with: vmsspoc_default_datagroup
 
 explore: drugtest {}
-
+explore: affordable_housing_dataset {}
+explore: hr_dataste {}
 explore: drugtrain {}
 explore: weather_history_report {}
 explore: hyundai {}
