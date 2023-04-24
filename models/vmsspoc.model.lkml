@@ -20,6 +20,7 @@ explore: drugtrain {}
 explore: weather_history_report {}
 explore: hyundai {}
 # explore: global_inflation {}
+explore: survey_report {}
 explore: airline_data {}
 explore: sprint3_report2 {}
 # explore: product_sales1 {
