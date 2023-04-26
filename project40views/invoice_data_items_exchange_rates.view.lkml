@@ -37,6 +37,12 @@ view: invoice_data_items_exchange_rates {
     sql: ${TABLE}.Discount__ ;;
   }
 
+  dimension: discount_given {
+    type: number
+    primary_key: yes
+    sql: ${discount__} ;;
+  }
+
   dimension: exchange_rate {
     type: string
     sql: ${TABLE}.Exchange_Rate ;;
@@ -60,6 +66,54 @@ view: invoice_data_items_exchange_rates {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.Invoice_Date ;;
+  }
+
+  dimension: Month {
+    type: string
+    sql: ${invoice_month} ;;
+  }
+
+  dimension: month_number {
+    type: number
+    sql:
+    CASE
+      WHEN ${Month} IS NULL THEN NULL
+      ELSE
+        CASE
+          WHEN LENGTH(${Month}) = 7 THEN
+            CAST(SUBSTRING(${Month}, 6, 2) AS INT64)
+          ELSE NULL
+        END
+    END ;;
+  }
+
+  dimension: month_name {
+    type: string
+    sql:
+    CASE
+      WHEN ${Month} IS NULL THEN NULL
+      ELSE
+        CASE
+          WHEN LENGTH(${Month}) = 7 THEN
+            CASE
+              WHEN SUBSTRING(${Month}, 6, 2) = '01' THEN 'January'
+              WHEN SUBSTRING(${Month}, 6, 2) = '02' THEN 'February'
+              WHEN SUBSTRING(${Month}, 6, 2) = '03' THEN 'March'
+              WHEN SUBSTRING(${Month}, 6, 2) = '04' THEN 'April'
+              WHEN SUBSTRING(${Month}, 6, 2) = '05' THEN 'May'
+              WHEN SUBSTRING(${Month}, 6, 2) = '06' THEN 'June'
+              WHEN SUBSTRING(${Month}, 6, 2) = '07' THEN 'July'
+              WHEN SUBSTRING(${Month}, 6, 2) = '08' THEN 'August'
+              WHEN SUBSTRING(${Month}, 6, 2) = '09' THEN 'September'
+              WHEN SUBSTRING(${Month}, 6, 2) = '10' THEN 'October'
+              WHEN SUBSTRING(${Month}, 6, 2) = '11' THEN 'November'
+              WHEN SUBSTRING(${Month}, 6, 2) = '12' THEN 'December'
+              ELSE NULL
+            END
+          ELSE NULL
+        END
+    END ;;
+    order_by_field: month_number
   }
 
   dimension: item_id {
@@ -120,6 +174,12 @@ view: invoice_data_items_exchange_rates {
     drill_fields: []
   }
 
+  measure: Total_Discount {
+    type: average
+    sql: ${discount_given} ;;
+    value_format: "0.0%"
+  }
+
   measure: Total_Purchases_Order_Amount_ {
     type: sum
     sql: ${Total_Purchase_Order_Amount} ;;
@@ -145,5 +205,22 @@ view: invoice_data_items_exchange_rates {
     sql: ${Total_Invoice_Amount} ;;
     value_format: "0.00"
     value_format_name: usd
+  }
+
+  measure: Total_Discount_Percentage {
+    type: sum
+    sql: ${discount__}/100 ;;
+    value_format: "0.0%"
+  }
+
+  measure: Average_Dsicount_Percentage {
+    type: average
+    sql: ${discount__} ;;
+    value_format: "0.0%"
+  }
+
+  measure: Total_Invoices {
+    type: count
+    drill_fields: [item_id]
   }
 }

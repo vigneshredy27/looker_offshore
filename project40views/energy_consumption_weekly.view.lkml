@@ -198,36 +198,43 @@ view: energy_consumption_weekly {
   measure: Sum_of_actual_kwh_current_year {
     type: sum
     sql: ${actual_kwh_present_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: Sum_of_actual_kwh_previous_year {
     type: sum
     sql: ${actual_kwh_previous_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: Avg_of_actual_kwh_current_year {
     type: average
     sql: ${actual_kwh_present_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: Avg_of_actual_kwh_previous_year {
     type: average
     sql: ${actual_kwh_previous_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: Avg_ytd_actual_kwh_present {
     type: average
     sql: ${ytd_actual_kwh_present_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: sum_ytd_actual_kwh_present {
     type: sum
     sql: ${ytd_actual_kwh_present_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: sum_ytd_actual_kwh_previous {
     type: average
     sql: ${ytd_actual_kwh_previous_year} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: Total_budget_kwh {
@@ -248,21 +255,25 @@ view: energy_consumption_weekly {
   measure: sum_ytd_budget {
     type:  sum
     sql: ${ytd_budget_kwh} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: avg_ytd_budget {
     type:  average
     sql: ${ytd_actual_kwh} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: sum_difference {
     type:  sum
     sql: ${ytd_usage_difference_actual_previous_and_present} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: avg_difference {
     type:  average
     sql: ${ytd_percent_difference_actual_previous_and_present} ;;
+    value_format: "0.0, \" KWh\""
   }
 
 
