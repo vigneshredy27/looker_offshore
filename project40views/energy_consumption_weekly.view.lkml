@@ -107,6 +107,12 @@ view: energy_consumption_weekly {
     sql: ${TABLE}.report_date ;;
   }
 
+  dimension: week_number {
+    type: number
+    sql: EXTRACT(week FROM ${TABLE}.report_date) ;;
+  }
+
+
   dimension: site {
     type: string
     sql: ${TABLE}.site ;;
@@ -188,6 +194,12 @@ view: energy_consumption_weekly {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: Actual_KWh {
+    type: sum
+    sql: ${actual_kwh} ;;
+    value_format: "0.0, \" KWh\""
   }
 
   measure: Sum {
