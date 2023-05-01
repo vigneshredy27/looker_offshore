@@ -22,6 +22,7 @@ explore: hyundai {}
 # explore: global_inflation {}
 explore: survey_report {}
 explore: airline_data {}
+explore: log_reg_model_census {}
 explore: sprint3_report2 {}
 # explore: product_sales1 {
 #   join: products {
