@@ -75,6 +75,12 @@ view: survey_report {
     sql: ${percentage} ;;
   }
 
+  measure: Average_Response_Percentage_Value {
+    type: average
+    sql: ${percentage} ;;
+    value_format: "0.00%"
+  }
+
   # dimension: Np {
   #   type: number
   #   sql: ${AVG_COUNT}/${SUM_PERCENTAGE}  ;;
