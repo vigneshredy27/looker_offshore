@@ -44,8 +44,45 @@ view: survey_report {
   }
 
   measure: Average_Response_Percentage {
+    type: percent_of_total
+    sql: ${Total_Responses_Count}/${COUNT_COUNT}  ;;
+    # value_format: "0.00%"
+  }
+
+  measure: Response_Percentage {
+    type: number
+    sql: ${COUNT_COUNT}/${Total_Responses_Count}  ;;
+    # value_format: "0.00%"
+  }
+
+  measure: SUM_COUNT {
+    type: sum
+    sql: ${survey_count} ;;
+  }
+
+  measure: COUNT_COUNT {
+    type: count
+    drill_fields: [survey_count]
+  }
+
+  measure: AVG_COUNT {
     type: average
+    sql: ${survey_count} ;;
+  }
+
+  measure: SUM_PERCENTAGE {
+    type: sum
     sql: ${percentage} ;;
+  }
+
+  # dimension: Np {
+  #   type: number
+  #   sql: ${AVG_COUNT}/${SUM_PERCENTAGE}  ;;
+  # }
+
+  measure: NPS {
+    type: number
+    sql: ${AVG_COUNT}/${SUM_PERCENTAGE} ;;
     value_format: "0.00%"
   }
 }
